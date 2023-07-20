@@ -1,0 +1,158 @@
+//OOP is a programming paradigm or a way structuring the code. It is a specific style to implement certain principles. 
+//In short, a programming paradigm is a way of thinking about programming, a way of structuring your code.
+//And there are many different programming paradigms, and certain languages are built for certain 
+ paradigms. The most common are procedural, object oriented and functional.
+//So an object is a self-contained piece of code and is a collection of properties.
+  And a property is in an association between a name or a key and a value.
+//And a property value can also be a function, in which case that property is known as a method.
+
+/*
+<!-- Dom -->
+    1.Window object is the top most global object, it includes lot of stuff like document object.
+    2.we can do console.log(window.document) to see elements; to see properties and methods stuff use console.dir(window.document)...
+    3.we can directly use document object and no need to prefix it with window as window is the global object.
+    4.And you can use properties like body on the doc object.
+    5.There are some methods that act upon document object like write,getElement etc.. 
+      one of the most which you don't see is write(); which add the text to the browser.
+    6.Any HTML tag on the page is an element.
+    7.querySelector is used to select a single element from the DOM tree,
+      while document.querySelectorAll is used to select multiple elements from the DOM tree.
+*/
+
+   *****OOPS*****
+Class : A class is data and methods, which is template for an object.
+Object : An instance/copy of a class.
+Constructor : It has to have the exact name "constructor"
+              It is executed automatically when a new object is created
+              It is used to initialize object properties
+              Does not return anything.
+
+//Components of OOP:
+Constructor Functions:
+    Creates a blue print for an object.
+Prototypes : 
+    A way for objects to inherit properties and methods from one another.
+Classes : Another way to create a blue print.
+Instances : Objects are "Instantiated" using the blue print(constructor or class).  
+
+
+****************************************************************************
+//Principles of OOP's:
+1) Abstraction : 
+    Data abstraction is the process of hiding certain details and showing only essential information 
+    to the user. Abstraction can be achieved with either abstract classes or interfaces.
+Example: Take a car, you don't really need to know how a car works, you need to know how to drive it.
+Things like the ignition, the gas, the brakes, etcetera.You don't need to know how the fuel pump works to drive a car.That's abstraction.
+
+It's the process of hiding the details of how something works and only showing the important parts.
+Now, since objects can get pretty large and complex, it's not usually possible to show the user of
+that object all the details of how it works.
+
+2) Encapsulation : 
+    It is the process of wrapping up data and methods into a unit such as a class or a function.
+Encapsulation usually includes some kind of data-hiding.    
+Datahiding : public, private, protected,internal.
+
+3) Inheritance : It is when a class(child) acquires the properties(data and methods) of another class(parent) except private properties.
+
+4) Ploymorphism : 
+Polymorphism and Overriding Methods:
+Polymorphism means "many forms", and it occurs when we have many classes that are related to each other 
+by inheritance. or it describes situations in which something occurs in several different forms.
+ So very common example of polymorphism is when we use the same method or same method name for different type of objects.
+
+Inheritance lets us inherit fields and methods from another class.Polymorphism uses those methods to 
+perform different tasks. This allows us to perform a single action in different ways.
+
+Overriding : When a subclass provides a different implementation, to an already existing method 
+in the super class.
+
+
+****************************************************************************
+####JavaScript Object create() Method:****
+JavaScript object.create() method is used to create a new object with the specified prototype object and properties. Object.create() method returns a new object with the specified prototype object and properties.
+
+Syntax:  
+Object.create(prototype[, propertiesObject]);
+
+***Parameters: 
+prototype: It is the prototype object from which a new object has to be created.
+propertiesObject: It is an optional parameter. It specifies the enumerable properties to be added to the newly created object.
+Return Value: Object.create() returns a new object with the specified prototype object and properties. 
+
+==>Examples of the above function are provided below.
+Examples 1: In this example, there are two functions “fruits” and “apple”.A new instance of apple is created which is named as “app” and it has been specified with the prototype and property of “fruits” i.e. this.name = ‘fruit 1’. 
+
+Javascript:
+    // creating a function which will be the 
+    // prototype for the object to be created later
+    function fruits() {
+        this.name = 'fruit 1';
+    }
+      
+    // creating a function to whose object will 
+    // inherit properties from the prototype 
+    // using object.create() method
+    function
+    apple() {
+        fruits.call(this);
+    }
+      
+    // creating an object of the apple function which
+    // will have properties of the prototype 
+    // object i.e. fruits
+    apple.prototype = Object.create(fruits.prototype);
+    const app = new apple();
+      
+    // Displaying the created object
+    console.log(app.name);
+
+Output: "fruit 1"
+
+
+/**
+ * THIS - KW
+In JavaScript, the this keyword refers to an object.
+Which object depends on how this is being invoked (used or called).
+The this keyword refers to different objects depending on how it is used:
+
+In an object method, this refers to the object.
+Alone, this refers to the global object.
+In a function, this refers to the global object.
+In a function, in strict mode, this is undefined.
+In an event, this refers to the element that received the event.
+Methods like call(), apply(), and bind() can refer this to any object.
+ */
+
+****************************************************************************
+Object Seal and Freeze::
+Both freeze and seal are used to create non-extensible objects in JavaScript, but there are plenty of differences between them. 
+
+Object.seal() allows changes to the existing properties of an object. It prevents from deletion of existing properties but cannot prevent them from external changes. 
+Object.freeze() does not allow so. It makes an object immune to everything even little changes cannot be made. 
+Syntax:
+
+Object.seal(objectname);
+// creates an object
+var obj = {
+	// assigns 10 to value
+	value: 10
+};
+// creates a non-extensible object
+Object.seal(obj);
+// the value gets updated to 20
+obj.value = 20;
+console.log(obj.value);
+
+
+Object.freeze(objectname);
+var obj = {
+	// assigns 10 to value
+	value: 10
+};
+// creates a non-extensible object
+Object.freeze(obj);
+// updates the value
+obj.value = 20;
+// but cannot change the existing value
+console.log(obj.value);
